@@ -80,7 +80,19 @@ public class BookServiceImpl implements IBookService{
 
 	@Override
 	public DtoBook updateBook(Long id, DtoBook dtoBook) {
-		
+		DtoBook dto = new DtoBook();
+		Optional<Book> optional= bookRepository.findById(id);
+		if(optional.isPresent()) {
+			Book dbBook = optional.get();
+			dbBook.setTitle(dtoBook.getTitle());
+			dbBook.setIsbn(dtoBook.getIsbn());
+			dbBook.setPublisher(dtoBook.getPublisher());
+			dbBook.setPublicationYear(dtoBook.getPublicationYear());
+			
+			Book updateBook= bookRepository.save(dbBook);
+			BeanUtils.copyProperties(updateBook, dto);
+			return dto;
+		}
 		return null;
 	}
 
