@@ -64,19 +64,22 @@ Maven (Bağımlılık Yönetimi)
 
 Proje, "Interface-Based Programming" (Arayüze Dayalı Programlama) ve "Separation of Concerns" (Sorumlulukların Ayrılması) ilkelerine sıkı sıkıya bağlıdır.
 
-Dizin Yapısı (com.enesbayram.library)
 
+### Dizin Yapısı (`com.enesbayram.library`)
+
+```text
 src/main/java
 └── com.enesbayram.library
-    ├── controller      (API Sözleşmeleri - Interfaces)
-    │   └── impl        (API Uygulamaları - Implementations)
-    ├── services        (İş Mantığı Sözleşmeleri - Interfaces)
-    │   └── impl        (İş Mantığı Uygulamaları - Implementations)
-    ├── repository      (Veritabanı Erişimi - JPA Interfaces)
-    ├── entities        (Veritabanı Tablo Modelleri)
-    ├── dto             (Veri Aktarım Nesneleri)
-    ├── exception       (Özel Hata Sınıfları ve Global Handler)
-    └── starter         (Uygulama Başlatıcı)
+    ├── configuration       (Gelecek Planı: Güvenlik ayarları)
+    ├── controller          (API Sözleşmeleri - Interfaces)
+    │   └── impl            (API Uygulamaları - Implementations)
+    ├── dto                 (Veri Aktarım Nesneleri)
+    ├── entities            (Veritabanı Tablo Modelleri)
+    ├── exception           (Özel Hata Sınıfları ve Global Handler)
+    ├── repository          (Veritabanı Erişimi - JPA Interfaces)
+    ├── services            (İş Mantığı Sözleşmeleri - Interfaces)
+    │   └── impl            (İş Mantığı Uygulamaları - Implementations)
+    └── starter             (Uygulama Başlatıcı)
 
 
 🔌 API Endpoints (Nasıl Kullanılır?)
