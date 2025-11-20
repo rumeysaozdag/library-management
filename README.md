@@ -8,19 +8,19 @@ Bu proje, modern yazılım geliştirme standartlarına uygun olarak aşağıdaki
 
 ✅ Tamamlanan Modüller
 
-Kitap Yönetimi (Book):
+1. Kitap Yönetimi (Book):
 
 Kitap Ekleme, Listeleme, Güncelleme, Silme (CRUD).
 
 Veritabanı seviyesinde ISBN tekilliği (unique constraint) kontrolü.
 
-Üye Yönetimi (Member):
+2. Üye Yönetimi (Member):
 
 Üye Kaydı, Listeleme, Güncelleme, Silme (CRUD).
 
 E-posta adresi tekilliği kontrolü.
 
-Ödünç Alma Sistemi (Loan):
+3. Ödünç Alma Sistemi (Loan):
 
 Kitap ve Üye arasında İlişkisel Bağlantı (@ManyToOne).
 
@@ -101,15 +101,21 @@ POST /api/v1/members - Yeni üye ekle
 
 GET /api/v1/members - Tüm üyeleri listele
 
-... (Diğer CRUD işlemleri)
+GET /api/v1/members/{id} - ID ile üye getir
+
+PUT /api/v1/members/{id} - Üye güncelle
+
+DELETE /api/v1/members/{id} - Üye sil
 
 3. Ödünç Alma (Loans)
 
 POST /api/v1/loans - Kitap ödünç ver
 
-Gövde: { "bookId": 1, "memberId": 1, "loanDate": "...", "dueDate": "..." }
+Gövde: { "bookId": 1, "memberId": 1, "loanDate": "2025-01-01", "dueDate": "2025-01-15" }
 
 GET /api/v1/loans - Tüm işlemleri listele (Kitap ve Üye isimleriyle birlikte)
+
+PUT /api/v1/loans/{id} - İade Tarihi (returnDate) güncelle
 
 🔜 Gelecek Planları (Roadmap)
 
