@@ -31,13 +31,13 @@ public class Loan {
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name="member_id",nullable = false)
+	@JoinColumn(name="member_id",nullable = false)
 	private Member member;
 	
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="loan_date",nullable = false)
-	private Date loanDte;
+	private Date loanDate;
 	
 	
 	@Temporal(TemporalType.DATE)

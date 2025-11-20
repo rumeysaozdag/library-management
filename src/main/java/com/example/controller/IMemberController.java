@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.dto.DtoMember;
 
+import jakarta.validation.Valid;
+
 @RequestMapping("/api/v1/members")
 public interface IMemberController {
 
 	@PostMapping
-	DtoMember createMember(@RequestBody DtoMember dtoMember);
+	DtoMember createMember(@Valid @RequestBody DtoMember dtoMember);
 	
 	@GetMapping
 	List<DtoMember> getAllMembers();
@@ -25,7 +27,7 @@ public interface IMemberController {
 	DtoMember getMemberById(@PathVariable Long id);
 	
 	@PutMapping("/{id}")
-	DtoMember updateMember(@PathVariable Long id, @RequestBody DtoMember dtoMember);
+	DtoMember updateMember(@PathVariable Long id,@Valid @RequestBody DtoMember dtoMember);
 	
 	@DeleteMapping("/{id}")
 	void deleteMember(@PathVariable Long id);

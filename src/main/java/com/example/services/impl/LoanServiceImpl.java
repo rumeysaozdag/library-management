@@ -41,7 +41,14 @@ public class LoanServiceImpl implements ILoanService{
 			
 		}
 		Loan loan = new Loan();
+		
 		BeanUtils.copyProperties(dtoLoan, loan,"id","bookId", "memberId", "bookTitle", "memberName");
+		
+		loan.setLoanDate(dtoLoan.getLoanDate() != null ? dtoLoan.getLoanDate() : new java.sql.Date(System.currentTimeMillis()));
+        loan.setDueDate(dtoLoan.getDueDate() != null ? dtoLoan.getDueDate() : new java.sql.Date(System.currentTimeMillis() + 7L * 24 * 60 * 60 * 1000)); // 7 gün sonrası
+        loan.setReturnDate(dtoLoan.getReturnDate()); // opsiyonel
+
+		
 		loan.setBook(optionalBook.get());
 		loan.setMember(optionalMember.get());
 		

@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.dto.DtoBook;
 
+import jakarta.validation.Valid;
+
 @RequestMapping("/api/v1/books")
 public interface IBookController {
 
 	@PostMapping
-	DtoBook createBook(@RequestBody DtoBook newBookRequest);
+	DtoBook createBook(@Valid @RequestBody DtoBook newBookRequest);
 	
 	@GetMapping
 	public List<DtoBook> getAllBooks();
@@ -29,5 +31,5 @@ public interface IBookController {
 	
 	
 	@PutMapping("/{id}")
-	public  DtoBook updateBook(@PathVariable Long id,@RequestBody DtoBook updateBook);
+	public  DtoBook updateBook(@PathVariable Long id,@Valid @RequestBody DtoBook updateBook);
 }

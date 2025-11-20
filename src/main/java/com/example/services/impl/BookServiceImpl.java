@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dto.DtoBook;
 import com.example.entities.Book;
+import com.example.exception.ResourceNotFoundException;
 import com.example.repository.BookRepository;
 import com.example.services.IBookService;
 @Service
@@ -53,15 +54,11 @@ public class BookServiceImpl implements IBookService{
 
 	@Override
 	public DtoBook getBookById(Long id) {
-		DtoBook dtoBook = new DtoBook();
-		Optional<Book> optional= bookRepository.findById(id);
-		if(optional.isEmpty()) {
-			return null;
-			
-		}
-		Book dbBook= optional.get();
-		BeanUtils.copyProperties(dbBook, dtoBook);
+		Book dbBook = bookRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Kitap bulunamadı. ID: " + id));
 		
+		DtoBook dtoBook = new DtoBook();
+		BeanUtils.copyProperties(dbBook, dtoBook);
 		return dtoBook;
 	}
 
@@ -69,31 +66,33 @@ public class BookServiceImpl implements IBookService{
 
 	@Override
 	public void deleteBook(Long id) {
-		Optional<Book> optional= bookRepository.findById(id);
-		if(optional.isPresent()) {
-			bookRepository.delete(optional.get());
-		}
+		Book book = bookRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Silinecek kitap bulunamadı. ID: " + id));
 		
+		
+		bookRepository.delete(book);
 	}
 
 
 
 	@Override
 	public DtoBook updateBook(Long id, DtoBook dtoBook) {
+		Book dbBook = bookRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Güncellenecek kitap bulunamadı. ID: " + id));
+
+		
+		dbBook.setTitle(dtoBook.getTitle());
+		dbBook.setIsbn(dtoBook.getIsbn());
+		dbBook.setPublisher(dtoBook.getPublisher());
+		dbBook.setPublicationYear(dtoBook.getPublicationYear());
+		
+		
+		Book updateBook = bookRepository.save(dbBook);
+		
+		
 		DtoBook dto = new DtoBook();
-		Optional<Book> optional= bookRepository.findById(id);
-		if(optional.isPresent()) {
-			Book dbBook = optional.get();
-			dbBook.setTitle(dtoBook.getTitle());
-			dbBook.setIsbn(dtoBook.getIsbn());
-			dbBook.setPublisher(dtoBook.getPublisher());
-			dbBook.setPublicationYear(dtoBook.getPublicationYear());
-			
-			Book updateBook= bookRepository.save(dbBook);
-			BeanUtils.copyProperties(updateBook, dto);
-			return dto;
-		}
-		return null;
+		BeanUtils.copyProperties(updateBook, dto);
+		return dto;
 	}
 
 }
