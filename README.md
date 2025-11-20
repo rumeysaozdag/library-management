@@ -1,23 +1,23 @@
-###📚 Kütüphane Yönetim Sistemi (Library Management System)
+## .📚 Kütüphane Yönetim Sistemi (Library Management System)
 
 Bu proje, Spring Boot kullanılarak geliştirilmiş, Katmanlı Mimari (Layered Architecture) prensiplerine dayanan profesyonel bir RESTful API uygulamasıdır. Kütüphane üyelerini, kitapları ve ödünç alma süreçlerini yönetmek için tasarlanmıştır.
 
-###🚀 Proje Özellikleri (Features)
+🚀 Proje Özellikleri (Features)
 
 Bu proje, modern yazılım geliştirme standartlarına uygun olarak aşağıdaki özellikleri içerir:
 
-###✅ Tamamlanan Modüller
+## . ✅ Tamamlanan Modüller
 
 1. Kitap Yönetimi (Book):
 
-###. 📖 Kitap Ekleme, Listeleme, Güncelleme, Silme (CRUD).
+## . 📖 Kitap Ekleme, Listeleme, Güncelleme, Silme (CRUD).
 
-###. 🔑 Veritabanı seviyesinde ISBN tekilliği (unique constraint) kontrolü.
+## . 🔑 Veritabanı seviyesinde ISBN tekilliği (unique constraint) kontrolü.
 2. Üye Yönetimi (Member):
 
-###. 👤 Üye Kaydı, Listeleme, Güncelleme, Silme (CRUD).
+## . 👤 Üye Kaydı, Listeleme, Güncelleme, Silme (CRUD).
 
-###. 📧 E-posta adresi tekilliği kontrolü.
+## . 📧 E-posta adresi tekilliği kontrolü.
 
 3. Ödünç Alma Sistemi (Loan):
 
